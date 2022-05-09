@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: postgres
+  host: localhost
+
+development:
+  <<: *default
+  database: clinsyte_development
+
+test:
+  <<: *default
+  database: clinsyte_development_test
+
+production:
+  <<: *default

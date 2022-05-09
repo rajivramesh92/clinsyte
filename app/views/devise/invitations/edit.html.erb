@@ -1,0 +1,56 @@
+<%= stylesheet_link_tag 'application', media: 'all' %>
+<title><%= ENV['APP_NAME'] %></title>
+<header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <!-- <div class="navbar-inner"> -->
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <div class="scriptyx-img-icon-cropper pull-left">
+            <img class="scriptyx-img-icon" src="<%= asset_path('logo_icon.png') %>" />
+          </div>
+          <%= ENV['APP_NAME'].upcase %>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<% resource =  @resource || User.new %>
+
+<main>
+  <div class="container">
+    <div class="row">
+      <% if resource.errors[:password].present? %>
+        <div class="alert alert-danger">
+          <%= "Password #{resource.errors[:password].first}" %>
+        </div>
+      <% end %>
+      <div class="col-md-offset-4 col-md-4">
+        <%= form_for resource, :as => 'user', :url => invitation_path(User), :html => { :method => :put } do |f| %>
+          <%= f.hidden_field :invitation_token, :value => ( resource.invitation_token || params[:invitation_token] ) %>
+          <% if f.object.class.require_password_on_accepting %>
+            <h3>Set Password</h3>
+            <div class="form-group">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, :class => "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, :class => "form-control" %>
+            </div>
+          <% end %>
+
+          <p><%= f.submit "Join #{ENV['APP_NAME']}", :class => "btn btn-primary pull-right" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

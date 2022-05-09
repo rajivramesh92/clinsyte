@@ -1,0 +1,9 @@
+<h4>Hi <%= @user.user_name %></h4>
+
+<% if @options[:confirmation] %>
+  <% params = { :verification_token => @user.verification_code, :email => @user.email, :redirect => true } %>
+  <%= link_to("Verify My Account &#8594;".html_safe, "#{email_api_v1_users_confirmations_url}?#{params.to_query}")
+  %>
+<% else %>
+  Your account verification code is <%= @user.verification_code %>
+<% end %>

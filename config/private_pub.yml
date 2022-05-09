@@ -1,0 +1,10 @@
+development:
+  server: "http://localhost:9292/faye"
+  secret_token: "123a25ab7adc098a0f4b070a3dfe22c346990f3958f753192a6ec9f378a5e6d1"
+test:
+  server: "http://localhost:9292/faye"
+  secret_token: "123a25ab7adc098a0f4b070a3dfe22c346990f3958f753192a6ec9f378a5e6d1"
+production:
+  server: "https://clinsyte-faye.herokuapp.com/faye"
+  secret_token: "123a25ab7adc098a0f4b070a3dfe22c346990f3958f753192a6ec9f378a5e6d1"
+  signature_expiration: 36000 # one hour

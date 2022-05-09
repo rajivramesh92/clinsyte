@@ -1,0 +1,54 @@
+en:
+  notifications:
+
+    # Notification set when Patient attempts to add a Physician to his careteam
+    careteam_request_initiated:
+      one: 'You have received one care team membership invitation'
+      other: 'You have received %{count} care team membership invitations'
+      link: '/careteams/invites'
+
+    careteam_request_accepted:
+      one: '%{sender} has accepted your invitation to join your care team'
+      other: '%{sender} has accepted your invitation to join your care team'
+      link: '/careteam'
+
+    careteam_request_declined:
+      one: '%{sender} has declined your invitation to join your care team'
+      other: '%{sender} has accepted your invitation to join your care team'
+      link: '/'
+
+    # Notification set when Physician requests a Patient to add him to his careteam
+    careteam_join_request_initiated:
+      one: 'You have received a care team request'
+      other: 'You have received %{count} care team requests'
+      link: '/careteams/invites'
+
+    careteam_join_request_accepted:
+      one: '%{sender} has accepted your request to join the careteam'
+      other: '%{sender} has accepted your request to join the careteam'
+      link: '/careteams'
+
+    careteam_join_request_declined:
+      one: '%{sender} has declined your request to join the careteam'
+      other: '%{sender} has accepted your request to join the careteam'
+      link: '/'
+
+    appointment_request_initiated:
+      one: 'You have received one appointment request'
+      other: 'You have received %{count} appointment requests'
+      link: '/appointment/requests'
+
+    appointment_request_accepted:
+      one: '%{sender} has accepted your appointment request'
+      other: '%{sender} has accepted your appointment request'
+      link: '/my_calendar'
+
+    appointment_request_declined:
+      one: '%{sender} has declined your your appointment request'
+      other: '%{sender} has declined your appointment request'
+      link: '/'
+
+    survey_request_initiated:
+      one: 'You have received one survey request'
+      other: 'You have received %{count} survey requests'
+      link: '/surveys/requests'

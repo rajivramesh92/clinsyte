@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : ENV['APP_NAME'] %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : ENV['APP_NAME'] %>">
+    <%= include_gon(init: true) %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script>
+      window.__INITIAL_STATE = <%= get_state.to_json.html_safe %>;
+    </script>
+    <main role="main">
+      <div class="row">
+        <div class="col-md-3 col-xs-12"></div>
+        <div class="col-md-6 col-xs-12" id="alert-notification"></div>
+        <div class="col-md-3 col-xs-12"></div>
+      </div>
+      <%= yield %>
+    </main>
+    <%= javascript_include_tag 'private_pub' %>
+    <%= javascript_include_tag 'application' %>
+
+    <% if flash[:alert].present? %>
+      <script>
+        showToast("<%= flash[:alert] %>", 'error');
+      </script>
+    <% end %>
+
+  </body>
+</html>

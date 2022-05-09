@@ -1,0 +1,2 @@
+class DescriptiveQuestion < Question
+end
